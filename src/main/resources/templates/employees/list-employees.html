@@ -1,0 +1,68 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<title>
+Employee directory 
+</title>
+</head>
+<body>
+<div class="container">
+
+<h3>
+Employee-DIrectory 
+</h3>
+<hr> 
+
+<!-- Add button -->
+<!-- @ is used for whole context path  -->
+<a th:href="@{/employees/showFormForAdd}"
+class="btn btn-primary btn-sm mb-3">Add Employee</a>
+
+<table class="table">
+
+<thead>
+<tr>
+<th>
+FirstNAme
+</th>
+
+<th>
+LastNAme
+</th>
+
+<th>
+Email
+</th>
+
+<th>
+Action
+</th>
+
+</tr>
+</thead>
+
+<tbody>
+<tr th:each="tempEmployee:${employees}">
+<td th:text="${tempEmployee.firstName}"/>
+<td th:text="${tempEmployee.LastName}"/>
+<td th:text="${tempEmployee.email}"/>
+<td>
+<a th:href="@{/employees/showFormForUpdate(employeeId=${tempEmployee.id})}"
+class="btn btn-primary btn-sm mb-3">Update</a>
+
+<a th:href="@{/employees/showFormForDelete(employeeId=${tempEmployee.id})}"
+class="btn btn-danger btn-sm mb-3">Delete</a>
+
+</td>
+</tr>
+</tbody>
+
+</table>
+
+</div>
+</body>
+</html>
